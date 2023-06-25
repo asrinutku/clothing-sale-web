@@ -1,0 +1,66 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": ["react-app", "airbnb", "react-app/jest"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": ["react"],
+    "rules": {
+        "eol-last": 2,
+        "linebreak-style": "off",
+        "react/jsx-filename-extension": "off",
+        "comma-dangle": "off",
+        "import/no-extraneous-dependencies": "off",
+        "react/jsx-tag-spacing": "off",
+        "react/jsx-fragments": "off",
+        "object-curly-newline": "off",
+        "arrow-body-style": "off",
+        "react/function-component-definition": "off",
+        "react/destructuring-assignment": "off",
+        "react/prop-types": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-unresolved": "off",
+        "prefer-template": "off",
+        "import/prefer-default-export": "off",
+        "react/button-has-type": "off",
+        "import/order": "off",
+        "max-len": "off",
+        "function-paren-newline": "off",
+        "react/no-unescaped-entities": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "prefer-destructuring": "off",
+        "no-plusplus": "off",
+        "dot-notation": "off",
+        "radix": "off",
+        "array-callback-return": "off",
+        "react/jsx-no-duplicate-props": "off",
+        "consistent-return": "off",
+        "operator-linebreak": "off",
+        "react/jsx-wrap-multilines": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-uses-react": "off",
+        "no-restricted-syntax": [
+            "error",
+            {
+              "selector": "SequenceExpression",
+              "message":
+                "The comma operator is confusing and a common mistake. Don’t use it!"
+            }
+        ],
+        "quotes": [
+            "error",
+            "double",
+            { "avoidEscape": true, "allowTemplateLiterals": false }
+        ]
+      }
+}
