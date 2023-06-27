@@ -1,11 +1,11 @@
 .button-container {
   min-width: 165px;
   width: auto;
-  height: 50px;
+  height: 45px;
   padding: 0 35px;
 
   border-radius: 35px;
-  font-size: 15px;
+  font-size: 12px;
 
   text-transform: uppercase;
 
@@ -25,7 +25,7 @@
     opacity: 1;
   }
 
-  &.google-sign-in {
+  &.google {
     background-color: #4285f4;
     color: white;
 

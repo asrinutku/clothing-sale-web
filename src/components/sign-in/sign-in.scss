@@ -1,0 +1,25 @@
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+
+  h1 {
+    margin: 10px 0;
+
+    @media screen and (max-width: 1199px) {
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: 1em;
+    }
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 1199px) {
+    margin-bottom: 1em;
+  }
+}

@@ -47,7 +47,7 @@ const SignUp = () => {
 
   return (
     <div className="sign-up-container">
-      <h1 className="sign-up-title">Email ve Şifreniz ile Kayıt Olun</h1>
+      <h1 className="sign-up-title">Hesap Oluştur</h1>
       <form onSubmit={handleSubmit} className="sign-up-form">
         <FormInput
           label="İsim"
@@ -56,6 +56,7 @@ const SignUp = () => {
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           required
+          placeholder="İsim Giriniz"
         />
 
         <FormInput
@@ -65,6 +66,7 @@ const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder="Email Giriniz"
         />
 
         <FormInput
@@ -74,6 +76,7 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          placeholder="Şifre Giriniz"
         />
 
         <FormInput
@@ -83,6 +86,7 @@ const SignUp = () => {
           value={confirmpassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          placeholder="Şifre Tekrar Giriniz"
         />
 
         <Button type="submit">Hesap Oluştur</Button>

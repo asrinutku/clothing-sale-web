@@ -16,8 +16,8 @@ const Navigation = () => {
           <Link className="nav-link" to="/alisveris">
             ALIŞVERİŞ
           </Link>
-          <Link className="nav-link" to="/giris-yap">
-            GİRİŞ YAP
+          <Link className="nav-link" to="/kullanici-dogrulama">
+            GİRİŞ YAP / HESAP OLUŞTUR
           </Link>
         </div>
       </div>

@@ -5,5 +5,10 @@
 
   h1 {
     margin: 10px 0;
+
+    @media screen and (max-width: 1199px) {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
