@@ -8,21 +8,28 @@ import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
+import { useContext, useState } from "react";
 
 import Button from "../shared/button/button";
 import FormInput from "../shared/form-input/form-input";
-import { useState } from "react";
+import { UserContext } from "../../context/userContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { setUser } = useContext(UserContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
-      // TODO
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      setUser(user);
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
