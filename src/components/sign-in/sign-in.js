@@ -4,32 +4,23 @@
 import "./sign-in.scss";
 
 import {
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
-import { useContext, useState } from "react";
 
 import Button from "../shared/button/button";
 import FormInput from "../shared/form-input/form-input";
-import { UserContext } from "../../context/userContext";
+import { useState } from "react";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setUser } = useContext(UserContext);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      setUser(user);
+      await signInAuthUserWithEmailAndPassword(email, password);
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
@@ -48,8 +39,7 @@ const SignIn = () => {
   };
 
   const loginGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   return (

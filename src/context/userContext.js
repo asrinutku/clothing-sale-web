@@ -1,4 +1,8 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from "../utils/firebase/firebase.utils";
 
 export const UserContext = createContext({
   user: null,
@@ -7,6 +11,15 @@ export const UserContext = createContext({
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChangedListener((userData) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      setUser(userData);
+    });
+  });
 
   return (
     <UserContext.Provider
