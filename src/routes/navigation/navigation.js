@@ -3,12 +3,16 @@ import "./navigation.styles.scss";
 import { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 
+import { CartContext } from "../../context/CartContext";
+import CartDropdown from "./shopping-cart/cart-dropdown/cart-dropdown";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
+import ShoppingCart from "./shopping-cart/shopping-cart";
 import { UserContext } from "../../context/userContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 const Navigation = () => {
   const { user } = useContext(UserContext);
+  const { isOpen } = useContext(CartContext);
 
   const handleSignout = async () => {
     await signOutUser();
@@ -34,7 +38,10 @@ const Navigation = () => {
               GİRİŞ YAP / HESAP OLUŞTUR
             </Link>
           )}
+
+          <ShoppingCart />
         </div>
+        {isOpen && <CartDropdown />}
       </div>
 
       <Outlet />
