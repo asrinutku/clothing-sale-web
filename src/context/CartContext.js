@@ -27,7 +27,6 @@ const CartContextProvider = ({ children }) => {
           cartItems,
           setCartItems,
           itemOnCartCount,
-          setItemOnCartCount,
         };
       }, [isOpen, cartItems, itemOnCartCount])}
     >
