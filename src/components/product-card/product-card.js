@@ -1,29 +1,13 @@
 import "./product-card.scss";
 
+import { CartContext, addCartItem } from "../../context/CartContext";
+
 import Button from "../shared/button/button";
-import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
   const { cartItems, setCartItems } = useContext(CartContext);
-
-  const addCartItem = (productToAdd) => {
-    // product already exist
-    const existingCartItem = cartItems.find(
-      (cartItem) => cartItem.id === productToAdd.id
-    );
-
-    if (existingCartItem) {
-      return cartItems.map((cartItem) => (cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem)
-      );
-    }
-
-    // new product added to cartItems
-    return [...cartItems, { ...productToAdd, quantity: 1 }];
-  };
 
   return (
     <div className="product-card-container">
@@ -34,7 +18,7 @@ const ProductCard = ({ product }) => {
       </div>
       <Button
         buttonType="inverted"
-        onClick={() => setCartItems(addCartItem(product))}
+        onClick={() => setCartItems(addCartItem(product, cartItems))}
       >
         Sepete Ekle
       </Button>

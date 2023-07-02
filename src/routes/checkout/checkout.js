@@ -1,46 +1,53 @@
 import "./checkout.scss";
 
-import { CartContext } from "../../context/CartContext";
+import {
+  CartContext,
+  addCartItem,
+  removeCartItem,
+} from "../../context/CartContext";
+
 import { useContext } from "react";
 
 const Checkout = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const addCartItem = (productToAdd) => {
-    // product already exist
-    const existingCartItem = cartItems.find(
-      (cartItem) => cartItem.id === productToAdd.id
-    );
-
-    if (existingCartItem) {
-      return cartItems.map((cartItem) => (cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem)
-      );
-    }
-
-    // new product added to cartItems
-    return [...cartItems, { ...productToAdd, quantity: 1 }];
-  };
-
   return (
-    <div>
-      <h1>sepetim</h1>
-      <div>
-        {cartItems.map((product) => {
-          return (
-            <div key={product.id}>
-              <h2>{product.name}</h2>
-              <span>{product.quantity}</span>
-              <span>azalt</span>
-              <br />
-              <span onClick={() => setCartItems(addCartItem(product))}>
-                arttır
-              </span>
-            </div>
-          );
-        })}
+    <div className="checkout-container">
+      <div className="checkout-header">
+        <div className="header-block">
+          <span>Product</span>
+        </div>
+        <div className="header-block">
+          <span>Desc</span>
+        </div>
+        <div className="header-block">
+          <span>quantity</span>
+        </div>
+        <div className="header-block">
+          <span>price</span>
+        </div>
+        <div className="header-block">
+          <span>remove</span>
+        </div>
       </div>
+
+      {cartItems.map((product) => {
+        return (
+          <div key={product.id}>
+            <h2>{product.name}</h2> <br />
+            <span>{product.quantity}</span> <br />
+            <span
+              onClick={() => setCartItems(removeCartItem(product, cartItems))}
+            >
+              azalt
+            </span>
+            <br />
+            <span onClick={() => setCartItems(addCartItem(product, cartItems))}>
+              arttır
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 };
