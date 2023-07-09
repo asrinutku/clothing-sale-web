@@ -35,9 +35,14 @@ export const removeCartItem = (productToRemove, cartItems) => {
   );
 };
 
+export const clearCartItem = (productToClear, cartItems) => {
+  return cartItems.filter((cartitem) => cartitem.id !== productToClear.id);
+};
+
 const CartContextProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const [itemOnCartCount, setItemOnCartCount] = useState(0);
 
@@ -51,6 +56,14 @@ const CartContextProvider = ({ children }) => {
     }
   }, [cartItems]);
 
+  useEffect(() => {
+    const newTotalPrice = cartItems.reduce(
+      (total, cartItem) => total + cartItem.quantity * cartItem.price,
+      0
+    );
+    setTotalPrice(newTotalPrice);
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={useMemo(() => {
@@ -60,8 +73,10 @@ const CartContextProvider = ({ children }) => {
           cartItems,
           setCartItems,
           itemOnCartCount,
+          totalPrice,
+          setTotalPrice,
         };
-      }, [isOpen, cartItems, itemOnCartCount])}
+      }, [isOpen, cartItems, itemOnCartCount, totalPrice])}
     >
       {children}
     </CartContext.Provider>
