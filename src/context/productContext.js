@@ -1,13 +1,11 @@
 import { createContext, useMemo, useState } from "react";
 
-import PRODUCTS_DATA from "../shop.json";
-
 export const ProductContext = createContext({
   products: [],
 });
 
 const ProductContextProvider = ({ children }) => {
-  const [products, setProducts] = useState(PRODUCTS_DATA);
+  const [products, setProducts] = useState([]);
 
   return (
     <ProductContext.Provider
